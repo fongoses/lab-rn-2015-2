@@ -4,15 +4,15 @@ clear;
 clc;
 close all;
 % entradas da tabela verdade bipolar com entrada extra xo = +1
-x=[1 -1 -1; 1 -1 1; 1 1 -1; 1 1 1]; 
+x=[1 -1 -1; 1 -1 1; 1 1 -1; 1 1 1];
 d=[-1; 1; 1; -1]; %valores desejados da funçao
 %inicializaçao dos pesos
 wo=1.0*(2*rand(2, 3)-ones(2,3)); %ajustar a inicialização dos pesos
-ws=1.0*(2*rand(1, 3)-ones(1,3)); %encontrando o multiplicador adequado
+ws=0.5*(2*rand(1, 3)-ones(1,3)); %encontrando o multiplicador adequado
 %laço
-epocas=10; %ajustar o numero de epocas da simulaçao
+epocas=100; %ajustar o numero de epocas da simulaçao
 epoca=1;
-lrt=0.1; %ajustar a taxa de aprendizado
+lrt=0.25; %ajustar a taxa de aprendizado
 pats=4; %numero de padroes do arquivo de treinamento
 dwo=zeros(2,3);
 while epoca < epocas+1
@@ -45,3 +45,25 @@ for i=1:4
     end
 plot(eqm);
 EQM_final = eqm(epocas) %escreve erro quadratico médio final
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESULTADOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%desejado = -1
+%y = -0.9149
+
+%desejado = 1
+%y = 0.9397
+
+%desejado = 1
+%y = 0.9377
+
+%desejado = -1
+%y = -0.9191
+
+%EQM_final = 0.0055
+
+%O problema e que ao ser executado várias vezes com os mesmos parametros
+%o resultado pode piorar
