@@ -9,16 +9,17 @@ plot(x,y);
 hold on;
 plot(x,t,'*b') ;
 ni=1; %nr. de entradas
-nh=1; %ajustar nr. de unidades ocultas
+nh=9; %ajustar nr. de unidades ocultas
+display(nh);
 no=1; %nr. de unidades de saída
 %algoritmo BP com saída linear - para regressão
 %inicializaçao dos pesos
-wo=1.0*(2*rand(nh, ni+1)-ones(nh,ni+1)); %ajustar a inicialização dos pesos
-ws=1.0*(2*rand(no, nh+1)-ones(no,nh+1)) %ajustar a inicialização dos pesos
+wo=0.8*(2*rand(nh, ni+1)-ones(nh,ni+1)); %ajustar a inicialização dos pesos
+ws=0.7*(2*rand(no, nh+1)-ones(no,nh+1)); %ajustar a inicialização dos pesos
 %laço
-epocas=100; %ajustar o numero de epocas da simulaçao
+epocas=500; %ajustar o numero de epocas da simulaçao
 epoca=1;
-lrt=0.01; %ajustar a taxa de aprendizado
+lrt=0.025; %ajustar a taxa de aprendizado
 pats=xm; %numero de padroes do arquivo de treinamento
 dwo=zeros(nh,ni+1);
 dwop=dwo;
@@ -53,12 +54,17 @@ for i=1:xm
         vo=xx(:,i)'*wo';
         ho=tanh(vo);
         io=[1 ho];
-        vs=io*ws';    
+        vs=io*ws';
         yp(i)=vs; %escreve valor obtido
 end
     figure;
 plot(x,y);
 hold on;
-plot(x,t,'*b') ; 
-plot(x,yp,'or') ; 
+plot(x,t,'*b') ;
+plot(x,yp,'or') ;
 EQM_final = eqm(epocas) %escreve erro quadratico médio final
+
+% Numero impar de neuronios na camada oculta funcionou melhor, o formato dos valores esperados ficou mais parecido com a função seno
+% Muitas epocas fazem com que a rede perca convergência (mais de 500), quando a taxa de aprendizado é alta
+% Taxa de aprendizado baixa aumenta a convergência (o EQN sempre cai com o número de épocas), geralmente inversamente proporcional.
+% EQM_final =  0.0263

@@ -65,5 +65,5 @@ EQM_final = eqm(epocas) %escreve erro quadratico médio final
 
 %EQM_final = 0.0055
 
-%O problema e que ao ser executado várias vezes com os mesmos parametros
+%O problema e que ao ser executado varias vezes com os mesmos parametros
 %o resultado pode piorar
