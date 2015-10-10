@@ -64,7 +64,7 @@ plot(x,t,'*b') ;
 plot(x,yp,'or') ;
 EQM_final = eqm(epocas) %escreve erro quadratico médio final
 
-% Numero impar de neuronios na camada oculta funcionou melhor, o formato dos valores esperados ficou mais parecido com a função seno
-% Muitas epocas fazem com que a rede perca convergência (mais de 500), quando a taxa de aprendizado é alta
-% Taxa de aprendizado baixa aumenta a convergência (o EQN sempre cai com o número de épocas), geralmente inversamente proporcional.
+% Numero impar de neuronios na camada oculta funcionou melhor, o formato dos valores esperados ficou mais parecido com a funcao seno
+% Muitas epocas fazem com que a rede perca convergencia (mais de 500), quando a taxa de aprendizado e alta
+% Taxa de aprendizado baixa aumenta a convergencia (o EQN sempre cai com o numero de epocas), geralmente inversamente proporcional.
 % EQM_final =  0.0263
